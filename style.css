@@ -1,0 +1,302 @@
+body {
+  display: grid;
+}
+
+.headers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#header {
+  font-size: 2em;
+  margin-top: 2px;
+  margin-bottom: 5px;
+  color: rgb(235, 235, 52);
+}
+#header-chatroom {
+  color: rgb(19, 103, 103);
+}
+.buttons {
+  display: flex;
+  flex-direction: row;
+  width: 55vw;
+  justify-self: center;
+  justify-content: space-around;
+  padding: 10px;
+  border-radius: 15px;
+}
+.rooms {
+  align-items: center;
+  background-color: #fee6e3;
+  border: 2px solid #fee6e3;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #111;
+  cursor: pointer;
+
+  display: flex;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  height: 48px;
+  justify-content: center;
+  line-height: 24px;
+  max-width: 100%;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.rooms:after {
+  background-color: #f9f2f1;
+  border-radius: 8px;
+  content: "";
+  display: block;
+  height: 48px;
+  left: 0;
+  width: 100%;
+  position: absolute;
+
+  top: -2px;
+  transform: translate(8px, 8px);
+  transition: transform 0.2s ease-out;
+  z-index: -1;
+}
+
+.rooms:hover:after {
+  transform: translate(0, 0);
+}
+
+.rooms:active {
+  background-color: #ffdeda;
+  outline: 0;
+}
+
+.rooms:hover {
+  outline: 0;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+@media (min-width: 1072px) {
+  .rooms {
+    padding: 0 40px;
+  }
+}
+.messages {
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  display: flex;
+  justify-content: center;
+  justify-self: center;
+  align-items: center;
+  height: 50vh;
+  width: 50vw;
+  border: 3.5px solid #fee6e3;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+  border-bottom-left-radius: 7px;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: center;
+  max-width: 53vw;
+  margin-left: 22.4vw;
+}
+
+.update,
+.send {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 400px;
+  max-width: 100%;
+  position: relative;
+}
+
+.send input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  border: 2px solid #fee6e3;
+  padding: 1rem 2rem;
+}
+.send input:focus {
+  outline: none;
+  border-color: #fee6e3;
+  box-shadow: 0 0 5px rgba(255, 226, 227, 0.8);
+}
+
+.send button,
+.send button:focus {
+  background-color: white;
+  border-radius: 50%;
+  height: 100%;
+  width: 60px;
+  aspect-ratio: 1;
+  position: absolute;
+  right: 0;
+  outline: none;
+  border-color: #fee6e3;
+  box-shadow: 0 0 5px rgba(255, 226, 227, 0.8);
+}
+
+.update input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  border: 2px solid #fee6e3;
+  padding: 1rem 2rem;
+}
+.update input:focus {
+  outline: none;
+  border-color: #fee6e3;
+  box-shadow: 0 0 5px rgba(255, 226, 227, 0.8);
+}
+
+.update button,
+.update button:focus {
+  background-color: white;
+  border-radius: 50%;
+  height: 100%;
+  width: 60px;
+  aspect-ratio: 1;
+  position: absolute;
+  right: 0;
+  outline: none;
+  border-color: #fee6e3;
+  box-shadow: 0 0 5px rgba(255, 226, 227, 0.8);
+}
+
+#msgList {
+  width: 100%;
+}
+
+#alertDiv {
+  margin-bottom: 0;
+  padding: 5px;
+}
+.alert-success {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.show {
+  margin-bottom: 0;
+  opacity: 1;
+  transition: opacity 1s ease-in-out, margin-bottom 1s ease-in-out;
+}
+
+.own-message::before {
+  content: "";
+  border-radius: 20px 60px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 100%;
+  width: 50%;
+  background-color: rgb(255, 255, 130);
+  z-index: -1;
+}
+
+.own-message {
+  text-align: right;
+  color: #000;
+  /* background-color: rgb(255, 255, 130); ukloni ovu liniju */
+  /* border: 2px solid black; */
+  clear: both;
+  line-height: 18px;
+  font-size: 15px;
+  padding: 8px;
+  position: relative;
+  margin: 8px 0;
+  word-wrap: break-word;
+  z-index: -1;
+}
+
+.other-message::before {
+  border-radius: 20px 60px 40px;
+
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(209, 114, 51);
+  z-index: -1;
+}
+
+.other-message {
+  color: #000;
+  clear: both;
+  line-height: 18px;
+  font-size: 15px;
+  padding: 8px;
+  position: relative;
+  margin: 8px 0;
+  max-width: 47%;
+  word-wrap: break-word;
+  z-index: -1;
+  text-align: left;
+}
+
+.message-container {
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 10px;
+}
+.color-picker {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  border: 0px solid black;
+  border-radius: 340px;
+  height: 7vh;
+  width: 26.2vw;
+}
+
+#backgroundColor {
+  margin-left: 10px;
+}
+
+#updateColor {
+  margin-left: 10px;
+}
+@media (max-width: 1072px) {
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    max-width: 53vw;
+  }
+
+  .rooms {
+    margin-top: 10px;
+  }
+  .inputs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+  }
+}
